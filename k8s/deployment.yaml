@@ -17,13 +17,20 @@ spec:
     spec:
       containers:
       - image: prajyotparab31904/node-hello-world:latest
+        imagePullPolicy: Always
         name: node-hello-world
         volumeMounts:
           - name: sample-secret-apikey
             mountPath: /sample-secret/apikey
           - name: sample-secret-cert
             mountPath: /sample-secret/cert
-        resources: {}
+        resources:
+         requests:
+          cpu: 100m
+          memory: 128Mi
+         limits:
+          cpu: 200m
+          memory: 256Mi
       volumes:
       - name: sample-secret-apikey
         secret:
