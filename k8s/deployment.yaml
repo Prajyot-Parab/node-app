@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: node-hello-world
+  name: node-hello-world
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: node-hello-world
+  strategy: {}
+  template:
+    metadata:
+      labels:
+        app: node-hello-world
+    spec:
+      containers:
+      - image: prajyotparab31904/node-hello-world
+        name: node-hello-world
+        resources: {}
+status: {}
