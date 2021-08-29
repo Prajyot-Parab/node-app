@@ -16,7 +16,19 @@ spec:
         app: node-hello-world
     spec:
       containers:
-      - image: prajyotparab31904/node-hello-world
+      - image: prajyotparab31904/node-hello-world:latest
         name: node-hello-world
+        volumeMounts:
+          - name: sample-secret-apikey
+            mountPath: /sample-secret/apikey
+          - name: sample-secret-cert
+            mountPath: /sample-secret/cert
         resources: {}
+      volumes:
+      - name: sample-secret-apikey
+        secret:
+          secretName: sample-secret-apikey
+      - name: sample-secret-cert
+        secret:
+          secretName: sample-secret-cert
 status: {}
